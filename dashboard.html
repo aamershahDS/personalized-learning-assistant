@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            background-color: #6157C3; /* Set the background color */
+            display: flex;
+            flex-direction: column; /* Arrange elements in a column */
+            justify-content: center; /* Center content vertically */
+            align-items: center; /* Center content horizontally */
+            height: 100vh; /* Full viewport height */
+            margin: 0; /* Remove default margin */
+            color: white; /* Change text color for better contrast */
+            font-family: Arial, sans-serif; /* Font style */
+        }
+
+        h1 {
+            margin-bottom: 20px; /* Space below the heading */
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent white background */
+            padding: 20px;
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+            text-align: center; /* Center text */
+            width: 300px; /* Fixed width for the container */
+        }
+
+        input {
+            padding: 10px; /* Padding inside input fields */
+            width: 100%; /* Full width */
+            border: none; /* Remove default border */
+            border-radius: 5px; /* Rounded corners */
+            margin-bottom: 10px; /* Space below the input */
+        }
+
+        button {
+            padding: 10px; /* Padding inside button */
+            background-color: #4CAF50; /* Button color */
+            border: none; /* Remove default border */
+            border-radius: 5px; /* Rounded corners */
+            color: white; /* Button text color */
+            cursor: pointer; /* Pointer cursor on hover */
+            margin-top: 10px; /* Margin above the button */
+        }
+
+        button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+
+        .result {
+            margin-top: 20px; /* Space above the result section */
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.2); /* Slightly transparent background for results */
+            border-radius: 5px; /* Rounded corners */
+            text-align: left; /* Align text to the left */
+            color: white; /* Change text color for contrast */
+        }
+
+        a {
+            color: white; /* Link color */
+            display: block; /* Make links block elements for spacing */
+            margin: 10px 0; /* Space between links */
+        }
+    </style>
+</head>
+<body>
+    <h1>Dashboard</h1>
+    <div class="container">
+        <p>Welcome to your dashboard!</p>
+        
+        <!-- Input area for prompt -->
+        <form method="POST" action="{{ url_for('dashboard') }}">
+            <input type="text" name="prompt" placeholder="Enter what you want to study" required>
+            <button type="submit">Submit</button>
+        </form>
+        
+        <!-- Result area -->
+        <div class="result">
+            <h2>Results:</h2>
+            <p>{{ result }}</p> <!-- Display the result from Flask here -->
+        </div>
+    </div>
+    
+    <p>Done with the search? <a href="{{ url_for('logout') }}">Logout</a></p>
+</body>
+</html>
